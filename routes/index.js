@@ -2,6 +2,7 @@
 /*
  * GET home page.
  */
+var mongo = require('mongodb');
 
 exports.index = function(req, res){
 	res.render('index', { title: 'FBless' });
