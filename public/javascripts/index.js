@@ -42,7 +42,8 @@ function app_login(){
 	    url: "/get_user",
 	    type: "GET",
 	    dataType: "json",
-	    data: JSON.stringify({query_data: login.id}),
+	    data: JSON.stringify({login: login}),
+		contentType: "application/json",
 	    contentType: "application/json",
 	    success: function(data) {
 	      console.log('process sucess');

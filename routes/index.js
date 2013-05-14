@@ -13,11 +13,11 @@ exports.get_user = function(req, res){
 	  process.env.MONGOHQ_URL || 
 	  'mongodb://localhost/mydb'; 
 
-	var id = req.body.query_data;
-	console.log("hahahah "+id);
+	var login = req.body.login;
+	//console.log("hahahah "+id);
 
 	var query = {
-		fb_id: id
+		fb_id: login.id
 	};
 
 	mongo.Db.connect(mongoUri, function (err, db) {
