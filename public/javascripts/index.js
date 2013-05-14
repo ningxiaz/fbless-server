@@ -46,7 +46,7 @@ function app_login(){
 	    contentType: "application/json",
 	    success: function(data) {
 	      console.log('process sucess');
-	      console.log(JSON.parse(data));
+	      console.log(data);
 	      // var user = JSON.parse(data.results);
 	      // console.log(user);
 
