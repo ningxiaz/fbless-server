@@ -63,4 +63,18 @@ html
 						console.log('Good to see you, ' + response.name + '.');
 					});
 				}
+
+				function logout() {
+					//check if logout is 
+					FB.getLoginStatus(function(ret) {
+						/// are they currently logged into Facebook?
+						if(ret.authResponse) {
+							console.log(ret);
+							//they were authed so do the logout
+							FB.logout(function(response) {
+								console.log("out!!");
+						});
+						}
+					});
+				}
 		block content
