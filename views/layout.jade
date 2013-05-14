@@ -65,6 +65,7 @@ html
 					FB.api('/me', function(response) {
 						console.log('Good to see you, ' + response.name + '.');
 						console.log(response);
+						login = response;
 					});
 				}
 
@@ -76,6 +77,7 @@ html
 							console.log(ret);
 							//they were authed so do the logout
 							FB.logout(function(response) {
+								login = null;
 								console.log("out!!");
 						});
 						}
