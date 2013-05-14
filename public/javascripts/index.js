@@ -48,7 +48,8 @@ function app_login(){
 	      console.log(data);
 	      console.log('process sucess');
 
-	      if(!data.hasNext()){
+	      //not yet signed up to our FBless app
+	      if(data.results.length == 0){
 	      		show_signup_form();
 	      }
 	      else{
