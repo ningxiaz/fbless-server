@@ -10,6 +10,7 @@ exports.index = function(req, res){
 
 exports.get_user = function(req, res){
 	var fb_id = req.body.fb_id;
+	console.log("here "+fb_id);
 
 	var mongoUri = process.env.MONGOLAB_URI || 
 	  process.env.MONGOHQ_URL || 
