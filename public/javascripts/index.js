@@ -42,7 +42,7 @@ function app_login(){
 	    url: "/get_user",
 	    type: "GET",
 	    dataType: "json",
-	    data: JSON.stringify({'fb_id': login.id}),
+	    data: JSON.stringify({query_data: login.id}),
 	    contentType: "application/json",
 	    success: function(data) {
 	      console.log('process sucess');
