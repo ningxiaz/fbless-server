@@ -29,6 +29,8 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 
+app.get('/get_user', routes.get_user);
+
 app.post('/create_account', routes.create_account);
 
 app.get('/users', user.list);
