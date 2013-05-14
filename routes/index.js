@@ -13,7 +13,7 @@ exports.get_user = function(req, res){
 	  process.env.MONGOHQ_URL || 
 	  'mongodb://localhost/mydb'; 
 
-	var id = req.params.fb_id;
+	var id = req.query.fb_id;
 	//console.log("hahahah "+id);
 
 	var query = {
