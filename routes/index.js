@@ -23,7 +23,7 @@ exports.create_account = function(req, res){
 	  'mongodb://localhost/mydb'; 
 
 	mongo.Db.connect(mongoUri, function (err, db) {
-	  db.collection('Stars', function(er, collection) {
+	  db.collection('Users', function(er, collection) {
 	    collection.insert(record, {safe: true}, function(er,rs) {
 	    	if( er || !rs ) console.log("Record not saved");
 	    	else console.log("Record saved");
