@@ -27,11 +27,6 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.all('/', function(req, res){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-});
-
 app.get('/', routes.index);
 
 app.get('/get_user', routes.get_user);
