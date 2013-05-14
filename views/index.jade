@@ -4,3 +4,6 @@ block content
 	h1= title
 	p Welcome to #{title}
 	<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+	form(id='password_form')
+		input(type='password', name='password', id='password')
+		a(href='#', class='submit') Submit

@@ -3,6 +3,8 @@ html
 	head
 		title= title
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js")
+		script(type='text/javascript', src='javascripts/index.js')
 	body
 		.fb-root
 		script(type='text/javascript')
@@ -26,6 +28,7 @@ html
 					// login status of the person. In this case, we're handling the situation where they 
 					// have logged in to the app.
 					testAPI();
+					show_password_input();
 				} else if (response.status === 'not_authorized') {
 					// In this case, the person is logged into Facebook, but not into the app, so we call
 					// FB.login() to prompt them to do so. 
@@ -61,6 +64,7 @@ html
 					console.log('Welcome!  Fetching your information.... ');
 					FB.api('/me', function(response) {
 						console.log('Good to see you, ' + response.name + '.');
+						console.log(response);
 					});
 				}
 
