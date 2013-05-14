@@ -18,7 +18,7 @@ exports.get_user = function(req, res){
 
 	mongo.Db.connect(mongoUri, function (err, db) {
 	  db.collection('Users', function(er, collection) {
-	    collection.find({fb_id: fb_id}).toArray(function(er, rs){
+	    collection.find({'fb_id': fb_id}).toArray(function(er, rs){
 	    	res.contentType('json');
 	    	res.send({results: JSON.stringify(rs)});
 	    });
