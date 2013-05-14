@@ -27,13 +27,18 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+app.all('/reports', function(req, res){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+});
+
 app.get('/', routes.index);
 
 app.get('/get_user', routes.get_user);
 
 app.post('/create_account', routes.create_account);
 
-app.post('/save_report', routes.save_report);
+app.post('/reports/save', routes.save_report);
 
 app.get('/users', user.list);
 
