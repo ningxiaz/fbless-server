@@ -44,7 +44,6 @@ function app_login(){
 	    dataType: "json",
 	    data: {fb_id: login.id},
 		contentType: "application/json",
-	    contentType: "application/json",
 	    success: function(data) {
 	      console.log('process sucess');
 	      console.log(data);

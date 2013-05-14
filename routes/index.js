@@ -14,7 +14,6 @@ exports.get_user = function(req, res){
 	  'mongodb://localhost/mydb'; 
 
 	var id = req.query.fb_id;
-	//console.log("hahahah "+id);
 
 	var query = {
 		fb_id: id
@@ -57,4 +56,21 @@ exports.create_account = function(req, res){
 	
 	res.contentType('json');
 	res.send({data: JSON.stringify({'id': record.name})});
+};
+
+exports.create_account = function(req, res){
+	var report = req.body.report;
+
+	var mongoUri = process.env.MONGOLAB_URI || 
+	  process.env.MONGOHQ_URL || 
+	  'mongodb://localhost/mydb'; 
+
+	mongo.Db.connect(mongoUri, function (err, db) {
+	  db.collection('Usage', function(er, collection) {
+	    collection.insert(report, {safe: true}, function(er,rs) {
+	    	if( er || !rs ) console.log("Record not saved");
+	    	else console.log("Record saved");
+	    });
+	  });
+	});
 };

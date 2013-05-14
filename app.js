@@ -33,6 +33,8 @@ app.get('/get_user', routes.get_user);
 
 app.post('/create_account', routes.create_account);
 
+app.post('/save_report', routes.save_report);
+
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
