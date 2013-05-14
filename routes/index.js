@@ -16,23 +16,15 @@ exports.get_user = function(req, res){
 	var id = req.body.fb_id;
 
 	var query = {
-		fb_id: id
+		name: "Ningxia Zhang"
 	};
 
 	mongo.Db.connect(mongoUri, function (err, db) {
 	  db.collection('Users', function(er, collection) {
-	    // collection.find(query).toArray(function(er, rs){
-	    // 	res.contentType('json');
-	    // 	res.send({results: JSON.stringify(rs)});
-	    // });
-
-	    var rs = collection.findOne(query);
-	    res.contentType('json');
-	    var ret = {
-	    	fb_id: id,
-	    	rs: rs
-	    };
-	    res.send({results: JSON.stringify(ret)});
+	    collection.find(query).toArray(function(er, rs){
+	    	res.contentType('json');
+	    	res.send({results: JSON.stringify(rs)});
+	    });
 	  });
 	});
 };
