@@ -13,8 +13,10 @@ exports.get_user = function(req, res){
 	  process.env.MONGOHQ_URL || 
 	  'mongodb://localhost/mydb'; 
 
+	var id = req.body.fb_id;
+
 	var query = {
-		name: "Ningxia Zhang"
+		fb_id: id
 	};
 
 	mongo.Db.connect(mongoUri, function (err, db) {
@@ -26,7 +28,11 @@ exports.get_user = function(req, res){
 
 	    var rs = collection.findOne(query);
 	    res.contentType('json');
-	    res.send({results: JSON.stringify(rs)});
+	    var ret = {
+	    	fb_id: id,
+	    	rs: rs
+	    }
+	    res.send({results: JSON.stringify(ret)});
 	  });
 	});
 };
