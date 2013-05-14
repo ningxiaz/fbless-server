@@ -42,22 +42,23 @@ function app_login(){
 	    url: "/get_user",
 	    type: "GET",
 	    dataType: "json",
-	    data: JSON.stringify({login: login}),
+	    data: {fb_id: login.id},
 		contentType: "application/json",
 	    contentType: "application/json",
 	    success: function(data) {
 	      console.log('process sucess');
 	      console.log(data);
-	      // var user = JSON.parse(data.results);
-	      // console.log(user);
 
-	      // //not yet signed up to our FBless app
-	      // if(user.length == 0){
-	      // 		show_signup_form();
-	      // }
-	      // else{
-	      // 		show_settings();
-	      // }
+	      var user = JSON.parse(data.results);
+	      console.log(user);
+
+	      //not yet signed up to our FBless app
+	      if(user.length == 0){
+	      		show_signup_form();
+	      }
+	      else{
+	      		show_settings();
+	      }
 	   	},
 
 	    error: function() {
