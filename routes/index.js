@@ -13,9 +13,13 @@ exports.get_user = function(req, res){
 	  process.env.MONGOHQ_URL || 
 	  'mongodb://localhost/mydb'; 
 
+	var query = {
+		fb_id: req.body.fb_id
+	};
+
 	mongo.Db.connect(mongoUri, function (err, db) {
 	  db.collection('Users', function(er, collection) {
-	    collection.find({'fb_id': req.body.fb_id}).toArray(function(er, rs){
+	    collection.find(query).toArray(function(er, rs){
 	    	res.contentType('json');
 	    	res.send({results: JSON.stringify(rs)});
 	    });
