@@ -45,11 +45,12 @@ function app_login(){
 	    data: JSON.stringify({fb_id: login.id}),
 	    contentType: "application/json",
 	    success: function(data) {
-	      console.log(data);
 	      console.log('process sucess');
+	      var user = JSON.parse(data.results);
+	      console.log(user);
 
 	      //not yet signed up to our FBless app
-	      if(data.results.length == 0){
+	      if(user.length == 0){
 	      		show_signup_form();
 	      }
 	      else{
