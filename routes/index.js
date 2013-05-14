@@ -31,7 +31,7 @@ exports.get_user = function(req, res){
 	    var ret = {
 	    	fb_id: id,
 	    	rs: rs
-	    }
+	    };
 	    res.send({results: JSON.stringify(ret)});
 	  });
 	});
