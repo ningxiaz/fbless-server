@@ -58,7 +58,7 @@ exports.create_account = function(req, res){
 	res.send({data: JSON.stringify({'id': record.name})});
 };
 
-exports.create_account = function(req, res){
+exports.save_report = function(req, res){
 	var report = req.body.report;
 
 	var mongoUri = process.env.MONGOLAB_URI || 
