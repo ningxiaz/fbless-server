@@ -14,9 +14,10 @@ exports.get_user = function(req, res){
 	  'mongodb://localhost/mydb'; 
 
 	var id = req.body.fb_id;
+	console.log("hahahah "+id);
 
 	var query = {
-		name: "Ningxia Zhang"
+		fb_id: "1348413545"
 	};
 
 	mongo.Db.connect(mongoUri, function (err, db) {
