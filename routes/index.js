@@ -19,10 +19,14 @@ exports.get_user = function(req, res){
 
 	mongo.Db.connect(mongoUri, function (err, db) {
 	  db.collection('Users', function(er, collection) {
-	    collection.find(query).toArray(function(er, rs){
-	    	res.contentType('json');
-	    	res.send({results: JSON.stringify(rs)});
-	    });
+	    // collection.find(query).toArray(function(er, rs){
+	    // 	res.contentType('json');
+	    // 	res.send({results: JSON.stringify(rs)});
+	    // });
+
+	    var rs = collection.findOne(query);
+	    res.contentType('json');
+	    res.send({results: JSON.stringify(rs)});
 	  });
 	});
 };

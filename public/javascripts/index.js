@@ -46,16 +46,17 @@ function app_login(){
 	    contentType: "application/json",
 	    success: function(data) {
 	      console.log('process sucess');
-	      var user = JSON.parse(data.results);
-	      console.log(user);
+	      console.log(data);
+	      // var user = JSON.parse(data.results);
+	      // console.log(user);
 
-	      //not yet signed up to our FBless app
-	      if(user.length == 0){
-	      		show_signup_form();
-	      }
-	      else{
-	      		show_settings();
-	      }
+	      // //not yet signed up to our FBless app
+	      // if(user.length == 0){
+	      // 		show_signup_form();
+	      // }
+	      // else{
+	      // 		show_settings();
+	      // }
 	   	},
 
 	    error: function() {
