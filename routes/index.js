@@ -59,18 +59,20 @@ exports.create_account = function(req, res){
 };
 
 exports.save_report = function(req, res){
-	var report = req.body.report;
+	var date = req.body.date;
 
-	var mongoUri = process.env.MONGOLAB_URI || 
-	  process.env.MONGOHQ_URL || 
-	  'mongodb://localhost/mydb'; 
+	res.json("yeaahhhh "+date);
 
-	mongo.Db.connect(mongoUri, function (err, db) {
-	  db.collection('Usage', function(er, collection) {
-	    collection.insert(report, {safe: true}, function(er,rs) {
-	    	if( er || !rs ) console.log("Record not saved");
-	    	else console.log("Record saved");
-	    });
-	  });
-	});
+	// var mongoUri = process.env.MONGOLAB_URI || 
+	//   process.env.MONGOHQ_URL || 
+	//   'mongodb://localhost/mydb'; 
+
+	// mongo.Db.connect(mongoUri, function (err, db) {
+	//   db.collection('Usage', function(er, collection) {
+	//     collection.insert(report, {safe: true}, function(er,rs) {
+	//     	if( er || !rs ) console.log("Record not saved");
+	//     	else console.log("Record saved");
+	//     });
+	//   });
+	// });
 };
