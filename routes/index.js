@@ -60,10 +60,10 @@ exports.create_account = function(req, res){
 
 exports.save_report = function(req, res){
 	var date = req.params.date;
-	var fb_time = req.params.fb_time;
+	var fb_time = req.query.fb_time;
 	var total_time = req.params.total_time;
 
-	res.json("yeaahhhh "+date+" fb_time "+" total_time ");
+	res.json("yeaahhhh "+date+" "+fb_time+" "+total_time);
 
 	// var mongoUri = process.env.MONGOLAB_URI || 
 	//   process.env.MONGOHQ_URL || 
