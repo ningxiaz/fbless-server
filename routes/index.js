@@ -63,7 +63,7 @@ exports.save_report = function(req, res){
 	var fb_time = req.query.fb_time;
 	var total_time = req.query.total_time;
 
-	var record = {
+	var report = {
 		date: date,
 		fb_time: fb_time,
 		total_time: total_time
@@ -76,11 +76,11 @@ exports.save_report = function(req, res){
 	mongo.Db.connect(mongoUri, function (err, db) {
 	  db.collection('Usage', function(er, collection) {
 	    collection.insert(report, {safe: true}, function(er,rs) {
-	    	if( er || !rs ) console.log("Record not saved");
-	    	else console.log("Record saved");
+	    	if( er || !rs ) res.json("Report not saved");
+	    	else res.json("Report saved");
 	    });
 	  });
 	});
 
-	res.json("Save report");
+	
 };
