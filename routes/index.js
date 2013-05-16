@@ -59,11 +59,13 @@ exports.create_account = function(req, res){
 };
 
 exports.save_report = function(req, res){
+	var user_id = req.query.user_id;
 	var date = req.query.date;
 	var fb_time = req.query.fb_time;
 	var total_time = req.query.total_time;
 
 	var report = {
+		user_id: user_id,
 		date: date,
 		fb_time: fb_time,
 		total_time: total_time
