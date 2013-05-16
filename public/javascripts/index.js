@@ -14,8 +14,10 @@ $(document).ready(function(){
 			    data: JSON.stringify({login: login, email: email, password: password}),
 			    contentType: "application/json",
 			    success: function(data) {
-			      console.log(data);
-			      console.log('process sucess');
+			    	$('#signup_form').hide();
+			    	show_settings();
+				    console.log(data);
+				    console.log('process sucess');
 			   	},
 
 			    error: function() {
