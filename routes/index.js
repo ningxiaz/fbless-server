@@ -114,3 +114,20 @@ exports.simple_auth = function(req, res){
 	});
 
 };
+
+//GET request
+exports.post_shame = function(req, res){
+	var fb_id = req.query.fb_id;
+
+	//get access token from database
+
+	//post using Graph API with a POST request to FB
+};
+
+//POST request
+exports.save_accesstoken = function(req, res){
+	var fb_id = req.body.fb_id;
+
+	//save user's accesstoken in database
+	
+};

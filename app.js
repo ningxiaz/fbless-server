@@ -32,6 +32,10 @@ app.get('/', routes.index);
 
 app.get('/get_user', routes.get_user);
 
+app.post('/save_accesstoken', routes.save_accesstoken);
+
+app.get('/post_shame', routes.post_shame);
+
 app.post('/create_account', routes.create_account);
 
 //cross-domain requests
