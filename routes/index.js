@@ -84,3 +84,33 @@ exports.save_report = function(req, res){
 
 	
 };
+
+exports.simple_auth = function(req, res){
+	var email = req.query.email;
+	var password = req.query.password;
+
+	var query = {
+		email: email,
+		password: password
+	};
+
+	var mongoUri = process.env.MONGOLAB_URI || 
+	  process.env.MONGOHQ_URL || 
+	  'mongodb://localhost/mydb'; 
+
+	var empty = {};
+
+	mongo.Db.connect(mongoUri, function (err, db) {
+	  db.collection('Users', function(er, collection) {
+	    collection.find(query).toArray(function(er, rs){
+	    	if(rs.length!=0){
+	    		res.json(rs[0]);
+	    	}
+	    	else{
+	    		res.json(empty);
+	    	}
+	    });
+	  });
+	});
+
+};
