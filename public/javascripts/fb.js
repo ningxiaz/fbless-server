@@ -29,8 +29,8 @@ window.fbAsyncInit = function() {
 		// (2) it is a bad experience to be continually prompted to login upon page load.
 		//FB.login();
 		FB.login(function(response) {
-				console.log(response);
-			}, {scope: 'email,publish_actions'});
+			console.log(response);
+		}, {scope: 'email,publish_actions'});
 	} else {
 		// In this case, the person is not logged into Facebook, so we call the login() 
 		// function to prompt them to do so. Note that at this stage there is no indication
@@ -39,8 +39,8 @@ window.fbAsyncInit = function() {
 		// The same caveats as above apply to the FB.login() call here.
 		//FB.login();
 		FB.login(function(response) {
-				console.log(response);
-			}, {scope: 'email, publish_actions'});
+			console.log(response);
+		}, {scope: 'email, publish_actions'});
 	}
 	});
 	};
