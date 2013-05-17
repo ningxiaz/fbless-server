@@ -43,6 +43,8 @@ app.get('/save_report', routes.save_report);
 
 app.get('/simple_auth', routes.simple_auth);
 
+app.get('/save_goal', routes.save_goal);
+
 //app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){

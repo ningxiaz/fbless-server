@@ -87,6 +87,30 @@ exports.save_report = function(req, res){
 	
 };
 
+exports.save_goal = function(req, res){
+	var user_id = req.query.user_id;
+	var goal = req.query.goal;
+
+	var record = {
+		user_id: user_id,
+		goal: goal,
+		created: new Date()
+	};
+
+	var mongoUri = process.env.MONGOLAB_URI || 
+	  process.env.MONGOHQ_URL || 
+	  'mongodb://localhost/mydb'; 
+
+	mongo.Db.connect(mongoUri, function (err, db) {
+	  db.collection('Goals', function(er, collection) {
+	    collection.insert(record, {safe: true}, function(er,rs) {
+	    	if( er || !rs ) res.json("fail");
+	    	else res.json("success");
+	    });
+	  });
+	});
+};
+
 exports.simple_auth = function(req, res){
 	var email = req.query.email;
 	var password = req.query.password;
