@@ -84,6 +84,7 @@ exports.save_report = function(req, res){
 	  });
 	});
 
+
 	
 };
 
@@ -145,15 +146,49 @@ exports.simple_auth = function(req, res){
 exports.post_shame = function(req, res){
 	var fb_id = req.query.fb_id;
 
-	//get access token from database
+	var mongoUri = process.env.MONGOLAB_URI || 
+	  process.env.MONGOHQ_URL || 
+	  'mongodb://localhost/mydb'; 
 
+	var id = req.query.fb_id;
+
+	var query = {
+		fb_id: id
+	};
+
+	mongo.Db.connect(mongoUri, function (err, db) {
+	  db.collection('Users', function(er, collection) {
+	    collection.find(query).toArray(function(er, rs){
+	    	res.contentType('json');
+	    	//res.send({results: JSON.stringify(rs)});
+	    });
+	  });
+	});
+
+	
 	//post using Graph API with a POST request to FB
 };
 
 //POST request
 exports.save_accesstoken = function(req, res){
 	var fb_id = req.body.fb_id;
+	var accessToken = req.accessToken;
 
-	//save user's accesstoken in database
-	
+	var user_info = {
+		user_id: fb_id,
+		access_token: accessToken,
+	};
+
+	var mongoUri = process.env.MONGOLAB_URI || 
+	  process.env.MONGOHQ_URL || 
+	  'mongodb://localhost/mydb'; 
+
+	mongo.Db.connect(mongoUri, function (err, db) {
+	  db.collection('Users', function(er, collection) {
+	    collection.insert(user_info, {safe: true}, function(er,rs) {
+	    	if( er || !rs ) res.json("Access token not saved");
+	    	else res.json("Access token saved");
+	    });
+	  });
+	});
 };

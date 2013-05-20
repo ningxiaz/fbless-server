@@ -17,6 +17,7 @@ window.fbAsyncInit = function() {
 		// The response object is returned with a status field that lets the app know the current
 		// login status of the person. In this case, we're handling the situation where they 
 		// have logged in to the app.
+		console.log("response.status == 'connected'");
 		save_fb_login(app_login);
 
 	} else if (response.status === 'not_authorized') {
@@ -29,9 +30,15 @@ window.fbAsyncInit = function() {
 		// (2) it is a bad experience to be continually prompted to login upon page load.
 		//FB.login();
 		FB.login(function(response) {
-		   // handle the response
-		   console.log("Logging in!");
-		}, {scope: 'email,publish_actions'});
+
+			if (response.authResponse) { // The user has authenticated
+        		//save();
+    		} 
+    		else { // The user has not authenticated
+        		//notAuthenticatedSoDoSomethingElse(); 
+    		}
+    		console.log("Logging in!");
+		}, {scope: 'email, publish_actions'});
 	} else {
 		// In this case, the person is not logged into Facebook, so we call the login() 
 		// function to prompt them to do so. Note that at this stage there is no indication
@@ -42,7 +49,7 @@ window.fbAsyncInit = function() {
 		FB.login(function(response) {
 		   // handle the response
 		   console.log("Logging in!");
-		}, {scope: 'email,publish_actions'});
+		}, {scope: 'email, publish_actions'});
 	}
 	});
 	};
